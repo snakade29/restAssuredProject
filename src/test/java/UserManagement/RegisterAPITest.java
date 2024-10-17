@@ -9,20 +9,24 @@ import org.testng.annotations.Test;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 public class RegisterAPITest {
 
     @Test
     public void testRegisterAPI() {
-
+        String uuid = UUID.randomUUID().toString();
+        String randomemail = "user_" + uuid + "@example.com";
         // Given: Precondition (API endpoint and request body)
                 given()
                 .header("Content-Type", "application/json")
                 .body("{\n" +
-                        "    \"email\": \"Shubhamnakade976990@gmail.com\",\n" +
+                        "    \"email\":\"" + randomemail + "\",\n" +
                         "    \"password\": \"LeeCopper@12345\",\n" +
                         "    \"confirmpassword\": \"LeeCopper@12345\"\n" +
                         "}").log().all()
+
+
 
                 // When: Action (the request is made)
                 .when()
